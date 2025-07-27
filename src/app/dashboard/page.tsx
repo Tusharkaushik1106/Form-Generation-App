@@ -125,34 +125,39 @@ export default function DashboardPage() {
   );
   
   return (
-    <main className="w-full px-6 py-10 bg-white dark:bg-gray-900 transition-colors duration-200 min-h-screen">
+    <main className="w-full px-4 sm:px-6 py-6 sm:py-10 bg-white dark:bg-gray-900 transition-colors duration-200 min-h-screen">
       <ThemeToggle />
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Your Forms</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">Your Forms</h1>
         <div className="flex justify-end mb-6">
           <button
-            className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200"
+            className="px-4 py-3 sm:py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"
             onClick={() => openBuilder()}
           >
             + New Form
           </button>
         </div>
         {showBuilder && (
-          <div className="mb-8 border border-gray-300 dark:border-gray-600 rounded p-6 bg-white dark:bg-gray-800">
+          <div className="mb-8 border border-gray-300 dark:border-gray-600 rounded p-4 sm:p-6 bg-white dark:bg-gray-800">
             <FormBuilder
               key={editingForm?._id || 'new'}
               form={editingForm || undefined}
               onChange={(f) => setFormDraft(f)}
             />
-            <button
-              className="mt-4 px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200"
-              onClick={() => handleSave(formDraft!)}
-            >
-              Save
-            </button>
-            <button className="mt-4 px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors duration-200" onClick={() => { setShowBuilder(false); setEditingForm(null); setFormDraft(null); }}>
-              Cancel
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+              <button
+                className="px-4 py-3 sm:py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"
+                onClick={() => handleSave(formDraft!)}
+              >
+                Save
+              </button>
+              <button 
+                className="px-4 py-3 sm:py-2 rounded bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors duration-200 text-sm sm:text-base" 
+                onClick={() => { setShowBuilder(false); setEditingForm(null); setFormDraft(null); }}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         )}
         {forms.length === 0 ? (
@@ -160,16 +165,16 @@ export default function DashboardPage() {
             <p className="text-center">No forms yet. Start by creating a new form!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {forms.map((form: Form) => (
               <div key={form._id} className="border border-gray-300 dark:border-gray-600 rounded p-4 bg-white dark:bg-gray-800">
                 <div className="mb-3">
-                  <div className="font-semibold text-gray-900 dark:text-white text-lg">{form.title}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{form.description}</div>
+                  <div className="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">{form.title}</div>
+                  <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">{form.description}</div>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div className="flex flex-col sm:flex-row gap-2 mb-3">
                   <button
-                    className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                    className="px-3 py-2 sm:py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
                     onClick={async () => {
                       await navigator.clipboard.writeText(`${window.location.origin}/public/${form.publicId || ''}`);
                       setCopiedId(form._id || '');
@@ -180,14 +185,14 @@ export default function DashboardPage() {
                   </button>
                   <a
                     href={`/dashboard/${form._id}/responses`}
-                    className="px-3 py-1 rounded bg-green-600 text-white text-xs hover:bg-green-700 transition-colors duration-200"
+                    className="px-3 py-2 sm:py-1 rounded bg-green-600 text-white text-xs hover:bg-green-700 transition-colors duration-200 text-center"
                   >
                     View Responses
                   </a>
                 </div>
                 <div className="flex gap-2">
-                  <button className="flex-1 px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200" onClick={() => openBuilder(form)}>Edit</button>
-                  <button className="flex-1 px-3 py-1 rounded bg-red-500 text-white text-xs hover:bg-red-600 transition-colors duration-200" onClick={() => handleDelete(form._id || '')}>Delete</button>
+                  <button className="flex-1 px-3 py-2 sm:py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200" onClick={() => openBuilder(form)}>Edit</button>
+                  <button className="flex-1 px-3 py-2 sm:py-1 rounded bg-red-500 text-white text-xs hover:bg-red-600 transition-colors duration-200" onClick={() => handleDelete(form._id || '')}>Delete</button>
                 </div>
               </div>
             ))}

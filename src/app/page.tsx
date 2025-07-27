@@ -45,7 +45,7 @@ export default function Home() {
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
               <div className="flex items-center">
-                <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
+                <Link href="/" className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                   {siteConfig.name}
                 </Link>
               </div>
@@ -80,6 +80,16 @@ export default function Home() {
                 </Link>
               </div>
 
+              {/* Mobile Menu Button */}
+              <div className="md:hidden flex items-center space-x-2">
+                <Link href="/login" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm">
+                  Login
+                </Link>
+                <Link href="/auth/signup" className="px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium transition-colors duration-200 hover:bg-gray-800 dark:hover:bg-gray-100 text-sm">
+                  Sign Up
+                </Link>
+              </div>
+
               {/* Theme Toggle */}
               <div className="flex items-center">
                 <ThemeToggle />
@@ -90,25 +100,25 @@ export default function Home() {
 
         {/* Hero Section */}
         <div className="relative overflow-hidden pt-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-32">
             <div className="text-center">
               {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full shadow-sm mb-8 animate-slide-down">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <div className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full shadow-sm mb-6 sm:mb-8 animate-slide-down">
+                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
                   Introducing Form Builder Pro
                 </span>
-                <svg className="w-4 h-4 ml-2 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-2 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
               
               {/* Main Headline */}
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-600 dark:text-gray-400 mb-8 leading-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 leading-tight">
                 Make your forms look
                 <span className="block mt-2">
-                  <div className="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  <div className="inline-block px-3 sm:px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
                     <div 
-                      className={`inline-block min-w-[200px] text-center transition-transform duration-600 ease-in-out text-black dark:text-white ${
+                      className={`inline-block min-w-[150px] sm:min-w-[200px] text-center transition-transform duration-600 ease-in-out text-black dark:text-white text-lg sm:text-xl md:text-2xl ${
                         isTransitioning ? 'transform -translate-x-full' : 'transform translate-x-0'
                       }`}
                     >
@@ -119,22 +129,22 @@ export default function Home() {
               </h1>
               
               {/* Description */}
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
+              <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay px-4">
                 Create stunning forms with our drag-and-drop builder. No coding required. 
                 Build, share, and analyze responses with beautiful animations and modern design.
               </p>
               
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-in">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-in px-4">
                 <Link 
                   href="/auth/signup" 
-                  className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg"
+                  className="px-6 sm:px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg"
                 >
                   Start Building
                 </Link>
                 <Link 
                   href="/form-builder" 
-                  className="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="px-6 sm:px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 >
                   Try Demo
                 </Link>
@@ -144,18 +154,18 @@ export default function Home() {
         </div>
 
         {/* Features Section */}
-        <div id="features" className="py-20 bg-gray-50 dark:bg-gray-800 relative">
+        <div id="features" className="py-12 sm:py-20 bg-gray-50 dark:bg-gray-800 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Powerful Features
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
                 Everything you need to create and manage forms
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Feature 1 */}
               <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 hover:rotate-1 group">
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">

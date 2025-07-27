@@ -70,19 +70,19 @@ export default function PublicFormPage({ params }: { params: Promise<{ publicId:
   );
   
   return (
-    <main className="max-w-xl mx-auto py-10 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <main className="max-w-xl mx-auto py-6 sm:py-10 px-4 sm:px-6 bg-white dark:bg-gray-900 transition-colors duration-200">
       <ThemeToggle />
-      <h1 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{form.title}</h1>
-      <p className="mb-6 text-gray-600 dark:text-gray-400">{form.description}</p>
+      <h1 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white">{form.title}</h1>
+      <p className="mb-6 text-sm sm:text-base text-gray-600 dark:text-gray-400">{form.description}</p>
       <form className="space-y-6" onSubmit={handleSubmit}>
         {form.questions.map((q: Question, idx: number) => (
-          <div key={q._id} className="space-y-1">
-            <label className="font-semibold text-gray-900 dark:text-white">
+          <div key={q._id} className="space-y-2">
+            <label className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
               {q.label} {q.required && <span className="text-red-500">*</span>}
             </label>
             {q.type === "text" && (
               <input
-                className="w-full border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-3 sm:py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-sm sm:text-base"
                 value={answers[idx] as string}
                 onChange={e => setAnswers(a => { const c = [...a]; c[idx] = e.target.value; return c; })}
                 required={q.required}
@@ -90,15 +90,16 @@ export default function PublicFormPage({ params }: { params: Promise<{ publicId:
             )}
             {q.type === "paragraph" && (
               <textarea
-                className="w-full border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-3 sm:py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-sm sm:text-base"
                 value={answers[idx] as string}
                 onChange={e => setAnswers(a => { const c = [...a]; c[idx] = e.target.value; return c; })}
                 required={q.required}
+                rows={4}
               />
             )}
             {(q.type === "multiple_choice" || q.type === "dropdown") && (
               <select
-                className="w-full border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-3 sm:py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-sm sm:text-base"
                 value={answers[idx] as string}
                 onChange={e => setAnswers(a => { const c = [...a]; c[idx] = e.target.value; return c; })}
                 required={q.required}
@@ -110,9 +111,9 @@ export default function PublicFormPage({ params }: { params: Promise<{ publicId:
               </select>
             )}
             {q.type === "checkbox" && (
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-3">
                 {q.options.map((opt: string, oidx: number) => (
-                  <label key={oidx} className="flex items-center gap-2 text-gray-900 dark:text-white">
+                  <label key={oidx} className="flex items-center gap-3 text-gray-900 dark:text-white text-sm sm:text-base">
                     <input
                       type="checkbox"
                       checked={Array.isArray(answers[idx]) && (answers[idx] as string[]).includes(opt)}
@@ -123,7 +124,7 @@ export default function PublicFormPage({ params }: { params: Promise<{ publicId:
                         else c[idx] = (c[idx] as string[]).filter((v: string) => v !== opt);
                         return c;
                       })}
-                      className="rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-blue-600 focus:ring-blue-500"
+                      className="w-5 h-5 sm:w-4 sm:h-4 rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-blue-600 focus:ring-blue-500"
                     />
                     {opt}
                   </label>
@@ -134,7 +135,7 @@ export default function PublicFormPage({ params }: { params: Promise<{ publicId:
         ))}
         {error && <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>}
         {success && <p className="text-green-600 dark:text-green-400 text-sm">{success}</p>}
-        <button type="submit" className="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200">Submit</button>
+        <button type="submit" className="w-full sm:w-auto px-6 py-3 sm:py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base">Submit</button>
       </form>
     </main>
   );

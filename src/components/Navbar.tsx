@@ -8,7 +8,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   return (
     <nav className="w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-900 border-b dark:border-gray-800">
-      <Link href="/" className="font-bold text-xl text-blue-600">Google Forms Clone</Link>
+      <Link href="/" className="font-bold text-xl text-blue-600">Form Builder</Link>
       <div className="flex items-center gap-4">
         <button
           aria-label="Toggle dark mode"

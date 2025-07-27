@@ -95,34 +95,36 @@ export default function ResponsesPage({ params }: { params: Promise<{ id: string
   );
   
   return (
-    <main className="max-w-3xl mx-auto py-10 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <main className="max-w-3xl mx-auto py-6 sm:py-10 px-4 sm:px-6 bg-white dark:bg-gray-900 transition-colors duration-200">
       <ThemeToggle />
-      <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Responses</h1>
-      <button className="mb-4 px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200" onClick={exportCSV}>Export CSV</button>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">Responses</h1>
+      <button className="mb-4 px-4 py-3 sm:py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base w-full sm:w-auto" onClick={exportCSV}>Export CSV</button>
       {chartData && (
-        <div className="mb-8">
-          <Bar data={chartData} />
+        <div className="mb-8 overflow-x-auto">
+          <div className="min-w-[300px]">
+            <Bar data={chartData} />
+          </div>
         </div>
       )}
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300 dark:border-gray-600">
+        <table className="min-w-full border border-gray-300 dark:border-gray-600 text-xs sm:text-sm">
           <thead>
             <tr className="bg-gray-50 dark:bg-gray-800">
-              <th className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">#</th>
+              <th className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white">#</th>
               {form?.questions?.map((q: Question, i: number) => (
-                <th key={i} className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">{q.label}</th>
+                <th key={i} className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white min-w-[120px]">{q.label}</th>
               ))}
-              <th className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">Submitted At</th>
+              <th className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white min-w-[120px]">Submitted At</th>
             </tr>
           </thead>
           <tbody>
             {responses.map((r, i) => (
               <tr key={r._id} className="bg-white dark:bg-gray-900">
-                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">{i + 1}</td>
+                <td className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white">{i + 1}</td>
                 {r.answers.map((a: Answer, j: number) => (
-                  <td key={j} className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">{Array.isArray(a.value) ? a.value.join(", ") : a.value}</td>
+                  <td key={j} className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white">{Array.isArray(a.value) ? a.value.join(", ") : a.value}</td>
                 ))}
-                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-gray-900 dark:text-white">{new Date(r.submittedAt).toLocaleString()}</td>
+                <td className="border border-gray-300 dark:border-gray-600 px-2 py-2 sm:py-1 text-gray-900 dark:text-white">{new Date(r.submittedAt).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
