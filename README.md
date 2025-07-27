@@ -211,7 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Tushar Kaushik**
 - GitHub: [@Tusharkaushik1106](https://github.com/Tusharkaushik1106)
-- LinkedIn: [Tushar Kaushik](https://linkedin.com/in/tushar-kaushik)
+- LinkedIn: [Tushar Kaushik](https://linkedin.com/in/tushar1106)
 
 ## 🙏 Acknowledgments
 
